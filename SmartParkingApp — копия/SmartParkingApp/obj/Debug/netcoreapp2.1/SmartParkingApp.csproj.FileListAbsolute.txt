@@ -1,0 +1,21 @@
+/Users/yakovshumilov/Documents/C# HW1/SmartParkingApp/SmartParkingApp/bin/Debug/netcoreapp2.1/SmartParkingApp.deps.json
+/Users/yakovshumilov/Documents/C# HW1/SmartParkingApp/SmartParkingApp/bin/Debug/netcoreapp2.1/SmartParkingApp.runtimeconfig.json
+/Users/yakovshumilov/Documents/C# HW1/SmartParkingApp/SmartParkingApp/bin/Debug/netcoreapp2.1/SmartParkingApp.runtimeconfig.dev.json
+/Users/yakovshumilov/Documents/C# HW1/SmartParkingApp/SmartParkingApp/bin/Debug/netcoreapp2.1/SmartParkingApp.dll
+/Users/yakovshumilov/Documents/C# HW1/SmartParkingApp/SmartParkingApp/bin/Debug/netcoreapp2.1/SmartParkingApp.pdb
+/Users/yakovshumilov/Documents/C# HW1/SmartParkingApp/SmartParkingApp/obj/Debug/netcoreapp2.1/SmartParkingApp.csprojAssemblyReference.cache
+/Users/yakovshumilov/Documents/C# HW1/SmartParkingApp/SmartParkingApp/obj/Debug/netcoreapp2.1/SmartParkingApp.csproj.CoreCompileInputs.cache
+/Users/yakovshumilov/Documents/C# HW1/SmartParkingApp/SmartParkingApp/obj/Debug/netcoreapp2.1/SmartParkingApp.AssemblyInfoInputs.cache
+/Users/yakovshumilov/Documents/C# HW1/SmartParkingApp/SmartParkingApp/obj/Debug/netcoreapp2.1/SmartParkingApp.AssemblyInfo.cs
+/Users/yakovshumilov/Documents/C# HW1/SmartParkingApp/SmartParkingApp/obj/Debug/netcoreapp2.1/SmartParkingApp.dll
+/Users/yakovshumilov/Documents/C# HW1/SmartParkingApp/SmartParkingApp/obj/Debug/netcoreapp2.1/SmartParkingApp.pdb
+/Users/yakovshumilov/CSharpProjects/SmartParkingApp/SmartParkingApp/bin/Debug/netcoreapp2.1/SmartParkingApp.deps.json
+/Users/yakovshumilov/CSharpProjects/SmartParkingApp/SmartParkingApp/bin/Debug/netcoreapp2.1/SmartParkingApp.runtimeconfig.json
+/Users/yakovshumilov/CSharpProjects/SmartParkingApp/SmartParkingApp/bin/Debug/netcoreapp2.1/SmartParkingApp.runtimeconfig.dev.json
+/Users/yakovshumilov/CSharpProjects/SmartParkingApp/SmartParkingApp/bin/Debug/netcoreapp2.1/SmartParkingApp.dll
+/Users/yakovshumilov/CSharpProjects/SmartParkingApp/SmartParkingApp/bin/Debug/netcoreapp2.1/SmartParkingApp.pdb
+/Users/yakovshumilov/CSharpProjects/SmartParkingApp/SmartParkingApp/obj/Debug/netcoreapp2.1/SmartParkingApp.csprojAssemblyReference.cache
+/Users/yakovshumilov/CSharpProjects/SmartParkingApp/SmartParkingApp/obj/Debug/netcoreapp2.1/SmartParkingApp.AssemblyInfoInputs.cache
+/Users/yakovshumilov/CSharpProjects/SmartParkingApp/SmartParkingApp/obj/Debug/netcoreapp2.1/SmartParkingApp.AssemblyInfo.cs
+/Users/yakovshumilov/CSharpProjects/SmartParkingApp/SmartParkingApp/obj/Debug/netcoreapp2.1/SmartParkingApp.dll
+/Users/yakovshumilov/CSharpProjects/SmartParkingApp/SmartParkingApp/obj/Debug/netcoreapp2.1/SmartParkingApp.pdb
