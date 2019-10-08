@@ -1,11 +1,9 @@
 ﻿<Properties StartupConfiguration="{DBA4CCAD-9294-4B39-A363-39F3F6CB54F0}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ParkingSession.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Program.cs" Line="1" Column="1" />
-      <File FileName="ParkingSession.cs" Line="20" Column="2" />
-      <File FileName="Tariff.cs" Line="1" Column="1" />
+      <File FileName="Program.cs" Line="23" Column="1" />
       <File FileName="ParkingManager.cs" Line="1" Column="1" />
-      <File FileName="User.cs" Line="1" Column="21" />
+      <File FileName="Tariff.cs" Line="28" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
