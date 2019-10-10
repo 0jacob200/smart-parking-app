@@ -3,6 +3,11 @@ using System.Collections.Generic;
 
 namespace ParkingApp
 {
+    /* TODO при окончании работы:
+     * 1. закоментировать все DateTime dateForDebug
+     * 2. ParkingCapacity = 500
+     */
+
     class ParkingManager
     {
         private const int ParkingCapacity = 500;
@@ -22,7 +27,7 @@ namespace ParkingApp
         };
 
         /* BASIC PART */
-        public ParkingSession EnterParking(string carPlateNumber)
+        public ParkingSession EnterParking(string carPlateNumber, DateTime dateForDebug)
         {
 
             /* Check that there is a free parking place (by comparing the parking capacity 
@@ -64,7 +69,7 @@ namespace ParkingApp
 
             foreach (ParkingSession session in ListSessionOpen)
             {
-                if ( (session.CarPlateNumber == carPlateNumber) && (session.ExitDt == null) && (session.PaymentDt == null) )
+                if ( (session.CarPlateNumber == carPlateNumber) && (session.ExitDt == null) )
                 {
                     return null;
                 }
@@ -73,14 +78,14 @@ namespace ParkingApp
             {
                 return null;
             }
-            ParkingSession newParkingSession = new ParkingSession(DateTime.Now, null, null, null, carPlateNumber, ++TicketId);
+            ParkingSession newParkingSession = new ParkingSession(/*DateTime.Now*/ dateForDebug, null, null, null, carPlateNumber, ++TicketId);
             ListSessionOpen.Add(newParkingSession);
             return newParkingSession;
 
             //throw new NotImplementedException();
         }
 
-        public bool TryLeaveParkingWithTicket(int ticketNumber, out ParkingSession session)
+        public bool TryLeaveParkingWithTicket(int ticketNumber, out ParkingSession session, DateTime dateForDebug)
         {
 
             /*
@@ -106,9 +111,9 @@ namespace ParkingApp
              */
 
             session = FindOpenSessionByTicket(ticketNumber);
-            if (Convert.ToInt32(DateTime.Now - session.EntryDt) <= FreeLeavePeriod || Convert.ToInt32(DateTime.Now - session.PaymentDt) <= FreeLeavePeriod) //TODO: не факт что верно. проверить при pAymentDt = null
+            if (Convert.ToInt32(/*DateTime.Now*/dateForDebug - session.EntryDt) <= FreeLeavePeriod || Convert.ToInt32(/*DateTime.Now*/dateForDebug - session.PaymentDt) <= FreeLeavePeriod) //TODO: не факт что верно. проверить при pAymentDt = null
             {
-                session.ExitDt = DateTime.Now;
+                session.ExitDt = /*DateTime.Now*/dateForDebug;
                 ListSessionOpen.Remove(session);
                 ListSessionClosed.Add(session);
                 return true;
@@ -122,17 +127,17 @@ namespace ParkingApp
             //throw new NotImplementedException();
         }        
 
-        public decimal GetRemainingCost(int ticketNumber)
+        public decimal GetRemainingCost(int ticketNumber, DateTime dateForDebug)
         {
             /* Return the amount to be paid for the parking
              * If a payment had already been made but additional charge was then given
              * because of a late exit, this method should return the amount 
              * that is yet to be paid (not the total charge)
              *
-             * вывести сумму, подлежащую оплате за парковку
+             * вывести сумму, подлежащую оплате за парковку - DONE
              * Если оплата уже была произведена, но была произведена дополнительная оплата
              * из-за позднего выхода этот метод должен вернуть amount
-             * это еще не оплачено (не общая сумма)
+             * это еще не оплачено (не общая сумма) _ DONE
              */
 
             decimal amount = 0;
@@ -140,13 +145,13 @@ namespace ParkingApp
             if (session.PaymentDt != null)
             {
 
-                Tariff tf = new Tariff((System.DateTime)session.PaymentDt, DateTime.Now, DictTariff);
+                Tariff tf = new Tariff((System.DateTime)session.PaymentDt, /*DateTime.Now*/dateForDebug, DictTariff);
                 amount = tf.Rate;
 
             }
             else
             {
-                Tariff tf = new Tariff(session.EntryDt, DateTime.Now, DictTariff);
+                Tariff tf = new Tariff(session.EntryDt, /*DateTime.Now*/dateForDebug, DictTariff);
                 amount = tf.Rate;
             }
             return amount;

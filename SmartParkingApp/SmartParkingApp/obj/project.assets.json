@@ -694,11 +694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/yakovshumilov/CSharpProjects/SmartParkingApp/SmartParkingApp/SmartParkingApp.csproj",
+      "projectUniqueName": "/Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/SmartParkingApp.csproj",
       "projectName": "SmartParkingApp",
-      "projectPath": "/Users/yakovshumilov/CSharpProjects/SmartParkingApp/SmartParkingApp/SmartParkingApp.csproj",
+      "projectPath": "/Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/SmartParkingApp.csproj",
       "packagesPath": "/Users/yakovshumilov/.nuget/packages/",
-      "outputPath": "/Users/yakovshumilov/CSharpProjects/SmartParkingApp/SmartParkingApp/obj/",
+      "outputPath": "/Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
