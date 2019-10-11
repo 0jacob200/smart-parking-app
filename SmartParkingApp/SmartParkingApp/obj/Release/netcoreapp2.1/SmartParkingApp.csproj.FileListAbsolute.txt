@@ -7,3 +7,4 @@
 /Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/obj/Release/netcoreapp2.1/SmartParkingApp.AssemblyInfo.cs
 /Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/obj/Release/netcoreapp2.1/SmartParkingApp.dll
 /Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/obj/Release/netcoreapp2.1/SmartParkingApp.pdb
+/Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/obj/Release/netcoreapp2.1/SmartParkingApp.csprojAssemblyReference.cache

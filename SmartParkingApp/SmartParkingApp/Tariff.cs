@@ -10,7 +10,7 @@ namespace ParkingApp
 
         public Tariff(DateTime firstDt, DateTime secondDt, Dictionary<int, decimal> dictTariff)
         {
-            Minutes = Convert.ToInt32((secondDt - firstDt).Minutes);
+            Minutes = Convert.ToInt32((secondDt - firstDt).TotalMinutes);
             int minbefore = 0;
             foreach (KeyValuePair<int, decimal> keyValue in dictTariff)
             {

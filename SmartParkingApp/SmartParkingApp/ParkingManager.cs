@@ -6,6 +6,7 @@ namespace ParkingApp
     /* TODO при окончании работы:
      * 1. закоментировать все DateTime dateForDebug
      * 2. ParkingCapacity = 500
+     * 3. удалить дефолтные комменты
      */
 
     class ParkingManager
@@ -69,12 +70,12 @@ namespace ParkingApp
 
             foreach (ParkingSession session in ListSessionOpen)
             {
-                if ( (session.CarPlateNumber == carPlateNumber) && (session.ExitDt == null) )
+                if (session.CarPlateNumber == carPlateNumber)
                 {
                     return null;
                 }
             }
-            if ((ParkingCapacity - ListSessionOpen.Count == 0))
+            if (ParkingCapacity - ListSessionOpen.Count == 0)
             {
                 return null;
             }
@@ -82,7 +83,6 @@ namespace ParkingApp
             ListSessionOpen.Add(newParkingSession);
             return newParkingSession;
 
-            //throw new NotImplementedException();
         }
 
         public bool TryLeaveParkingWithTicket(int ticketNumber, out ParkingSession session, DateTime dateForDebug)
@@ -110,8 +110,9 @@ namespace ParkingApp
              * (можно написать не налл, а что такое другое, но написать почему)
              */
 
-            session = FindOpenSessionByTicket(ticketNumber);
-            if (Convert.ToInt32(/*DateTime.Now*/dateForDebug - session.EntryDt) <= FreeLeavePeriod || Convert.ToInt32(/*DateTime.Now*/dateForDebug - session.PaymentDt) <= FreeLeavePeriod) //TODO: не факт что верно. проверить при pAymentDt = null
+            session = FindOpenSessionByTicket(ticketNumber); // TODO убрать
+            if (Convert.ToInt32( (/*DateTime.Now*/dateForDebug - session.EntryDt).TotalMinutes ) <= FreeLeavePeriod
+                || Convert.ToInt32( (/*DateTime.Now*/dateForDebug - session.PaymentD.TotalMinutes ?? 0 ) <= FreeLeavePeriod) //TODO: не факт что верно. проверить при pAymentDt = null
             {
                 session.ExitDt = /*DateTime.Now*/dateForDebug;
                 ListSessionOpen.Remove(session);
@@ -120,11 +121,10 @@ namespace ParkingApp
             }
             else
             {
-                session = null;
+                //session = null;
                 return false;
             }
 
-            //throw new NotImplementedException();
         }        
 
         public decimal GetRemainingCost(int ticketNumber, DateTime dateForDebug)
@@ -155,11 +155,9 @@ namespace ParkingApp
                 amount = tf.Rate;
             }
             return amount;
-
-            //throw new NotImplementedException();
         }
 
-        public void PayForParking(int ticketNumber, decimal amount)
+        public void PayForParking(int ticketNumber, decimal amount, DateTime dateForDebug)
         {
             /*
              * Save the payment details in the corresponding parking session
@@ -176,8 +174,15 @@ namespace ParkingApp
              */
 
             ParkingSession session = FindOpenSessionByTicket(ticketNumber);
-            session.TotalPayment = amount;
-            session.PaymentDt = DateTime.Now;
+            if (session.PaymentDt == null)
+            {
+                session.TotalPayment = amount;
+            }
+            else
+            {
+                session.TotalPayment += amount;
+            }
+            session.PaymentDt = /*DateTime.Now*/dateForDebug;
         }
 
         /* ADDITIONAL TASK 2 */
