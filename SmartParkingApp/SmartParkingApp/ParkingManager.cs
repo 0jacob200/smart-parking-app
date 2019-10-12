@@ -12,7 +12,7 @@ namespace ParkingApp
     class ParkingManager
     {
         private const int ParkingCapacity = 500;
-        private const int FreeLeavePeriod = 15;
+        private const double FreeLeavePeriod = 15;
         private static int TicketId = 0;
         private static List<ParkingSession> ListSessionOpen = new List<ParkingSession>();
         private static List<ParkingSession> ListSessionClosed = new List<ParkingSession>();
@@ -130,29 +130,52 @@ namespace ParkingApp
 
             bool flagOfAccess;
             session = FindOpenSessionByTicket(ticketNumber);
-            if (Convert.ToInt16((/*DateTime.Now*/dateForDebug - session.EntryDt).TotalMinutes) <= FreeLeavePeriod) 
+
+            if (GetRemainingCost )
             {
-                
-                flagOfAccess = true;
+
             }
-            else if (session.PaymentDt == null)
-            {
-                flagOfAccess = false;
-            }
-            else if (Convert.ToInt16((/*DateTime.Now*/dateForDebug - (System.DateTime)session.PaymentDt).TotalMinutes) <= FreeLeavePeriod)
-            {
-                flagOfAccess = true;
-            }
-            else if (session.TotalPayment != null)
-            {
-                flagOfAccess = true;
-            }
-            else
-            {
-                Console.WriteLine("непредвиденный case???");
-                flagOfAccess = false;
-            }
-            
+
+            #region
+            //double minAfterLastPayment;
+            //if (session.PaymentDt != null)
+            //{
+            //    minAfterLastPayment = (/*DateTime.Now*/dateForDebug - (DateTime)session.PaymentDt).TotalMinutes;
+            //}
+            //else
+            //{
+            //    minAfterLastPayment = 0;
+            //}
+
+
+            //if ((/*DateTime.Now*/dateForDebug - session.EntryDt).TotalMinutes <= FreeLeavePeriod) 
+            //{
+
+            //    flagOfAccess = true;
+            //}
+            //else if (session.PaymentDt == null)
+            //{
+            //    flagOfAccess = false;
+            //}
+            //else if (minAfterLastPayment <= FreeLeavePeriod)
+            //{
+            //    flagOfAccess = true;
+            //}
+            //else if ()
+            //{
+            //    flagOfAccess = false;
+            //}
+            //else if (session.TotalPayment != null)
+            //{
+            //    flagOfAccess = true;
+            //}
+            //else
+            //{
+            //    Console.WriteLine("непредвиденный case???");
+            //    flagOfAccess = false;
+            //}
+            #endregion
+
             switch (flagOfAccess)
             {
                 case true:
@@ -163,7 +186,7 @@ namespace ParkingApp
 
                 case false:
                     session = null;
-                    break;              
+                    break;
             }
             return flagOfAccess;
 
