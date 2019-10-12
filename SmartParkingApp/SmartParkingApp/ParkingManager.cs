@@ -30,7 +30,7 @@ namespace ParkingApp
         /* BASIC PART */
         public ParkingSession EnterParking(string carPlateNumber, DateTime dateForDebug)
         {
-
+            #region
             /* Check that there is a free parking place (by comparing the parking capacity 
             with the number of active parking sessions). If there are no free places, return null
             
@@ -67,6 +67,7 @@ namespace ParkingApp
             Расширенное задание:
             Свяжите новый сеанс парковки с существующим пользователем по номеру 
             автомобильной таблички (если такой пользователь существует)*/
+            #endregion
 
             foreach (ParkingSession session in ListSessionOpen)
             {
@@ -88,6 +89,7 @@ namespace ParkingApp
         public bool TryLeaveParkingWithTicket(int ticketNumber, out ParkingSession session, DateTime dateForDebug)
         {
 
+            #region
             /*
              * Check that the car leaves parking within the free leave period
              * from the PaymentDt (or if there was no payment made, from the EntryDt)
@@ -110,25 +112,66 @@ namespace ParkingApp
              * (можно написать не налл, а что такое другое, но написать почему)
              */
 
-            session = FindOpenSessionByTicket(ticketNumber); // TODO убрать
-            if (Convert.ToInt32( (/*DateTime.Now*/dateForDebug - session.EntryDt).TotalMinutes ) <= FreeLeavePeriod
-                || Convert.ToInt32( (/*DateTime.Now*/dateForDebug - session.PaymentD.TotalMinutes ?? 0 ) <= FreeLeavePeriod) //TODO: не факт что верно. проверить при pAymentDt = null
+            //session = FindOpenSessionByTicket(ticketNumber); // TODO убрать
+            //if (Convert.ToInt32( (/*DateTime.Now*/dateForDebug - session.EntryDt).TotalMinutes ) <= FreeLeavePeriod
+            //    || Convert.ToInt32( (/*DateTime.Now*/dateForDebug - session.PaymentD.TotalMinutes  ) <= FreeLeavePeriod) //TODO: не факт что верно. проверить при pAymentDt = null
+            //{
+            //    session.ExitDt = /*DateTime.Now*/dateForDebug;
+            //    ListSessionOpen.Remove(session);
+            //    ListSessionClosed.Add(session);
+            //    return true;
+            //}
+            //else
+            //{
+            //    //session = null;
+            //    return false;
+            //}
+            #endregion
+
+            bool flagOfAccess;
+            session = FindOpenSessionByTicket(ticketNumber);
+            if (Convert.ToInt16((/*DateTime.Now*/dateForDebug - session.EntryDt).TotalMinutes) <= FreeLeavePeriod) 
             {
-                session.ExitDt = /*DateTime.Now*/dateForDebug;
-                ListSessionOpen.Remove(session);
-                ListSessionClosed.Add(session);
-                return true;
+                
+                flagOfAccess = true;
+            }
+            else if (session.PaymentDt == null)
+            {
+                flagOfAccess = false;
+            }
+            else if (Convert.ToInt16((/*DateTime.Now*/dateForDebug - (System.DateTime)session.PaymentDt).TotalMinutes) <= FreeLeavePeriod)
+            {
+                flagOfAccess = true;
+            }
+            else if (session.TotalPayment != null)
+            {
+                flagOfAccess = true;
             }
             else
             {
-                //session = null;
-                return false;
+                Console.WriteLine("непредвиденный case???");
+                flagOfAccess = false;
             }
+            
+            switch (flagOfAccess)
+            {
+                case true:
+                    session.ExitDt = /*DateTime.Now*/dateForDebug;
+                    ListSessionOpen.Remove(session);
+                    ListSessionClosed.Add(session);
+                    break;
 
-        }        
+                case false:
+                    session = null;
+                    break;              
+            }
+            return flagOfAccess;
+
+        }
 
         public decimal GetRemainingCost(int ticketNumber, DateTime dateForDebug)
         {
+            #region
             /* Return the amount to be paid for the parking
              * If a payment had already been made but additional charge was then given
              * because of a late exit, this method should return the amount 
@@ -139,6 +182,7 @@ namespace ParkingApp
              * из-за позднего выхода этот метод должен вернуть amount
              * это еще не оплачено (не общая сумма) _ DONE
              */
+            #endregion
 
             decimal amount = 0;
             ParkingSession session = FindOpenSessionByTicket(ticketNumber);
@@ -159,6 +203,7 @@ namespace ParkingApp
 
         public void PayForParking(int ticketNumber, decimal amount, DateTime dateForDebug)
         {
+            #region
             /*
              * Save the payment details in the corresponding parking session
              * Set PaymentDt to current date and time
@@ -172,7 +217,7 @@ namespace ParkingApp
              * Для простоты мы не будем делать дополнительную проверку здесь и всегда
              * Предположим, что плата за парковку полностью оплачена
              */
-
+            #endregion
             ParkingSession session = FindOpenSessionByTicket(ticketNumber);
             if (session.PaymentDt == null)
             {
@@ -185,9 +230,10 @@ namespace ParkingApp
             session.PaymentDt = /*DateTime.Now*/dateForDebug;
         }
 
-        /* ADDITIONAL TASK 2 */
+        /* ADDITIONAL TASK 2 */ // TODO
         public bool TryLeaveParkingByCarPlateNumber(string carPlateNumber, out ParkingSession session)
         {
+            #region
             /* There are 3 scenarios for this method:
             
             1. The user has not made any payments but leaves the parking within the free leave period
@@ -250,7 +296,7 @@ namespace ParkingApp
             3b) Если нет подключенного пользователя, установите session = null, верните false (посетитель
             должен вставить парковочный билет и оплатить в киоске)
             */
-
+            #endregion
 
 
             throw new NotImplementedException();

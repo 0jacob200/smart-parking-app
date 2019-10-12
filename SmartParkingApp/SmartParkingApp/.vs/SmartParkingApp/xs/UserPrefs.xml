@@ -1,20 +1,18 @@
 ﻿<Properties StartupConfiguration="{DBA4CCAD-9294-4B39-A363-39F3F6CB54F0}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ParkingManager.cs">
     <Files>
-      <File FileName="Program.cs" Line="93" Column="1" IsPinned="True" />
-      <File FileName="ParkingManager.cs" Line="124" Column="34" IsPinned="True" />
-      <File FileName="ParkingSession.cs" Line="1" Column="1" IsPinned="True" />
-      <File FileName="Tariff.cs" Line="13" Column="74" />
-      <File FileName="User.cs" Line="1" Column="1" />
+      <File FileName="Program.cs" Line="111" Column="14" IsPinned="True" />
+      <File FileName="ParkingManager.cs" Line="141" Column="30" IsPinned="True" />
+      <File FileName="ParkingSession.cs" IsPinned="True" />
+      <File FileName="Tariff.cs" />
+      <File FileName="User.cs" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.SmartParkingApp PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/Program.cs" relfile="Program.cs" line="93" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
