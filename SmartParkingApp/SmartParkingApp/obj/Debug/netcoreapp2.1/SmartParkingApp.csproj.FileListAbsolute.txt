@@ -29,6 +29,7 @@
 /Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/obj/Debug/netcoreapp2.1/SmartParkingApp.AssemblyInfo.cs
 /Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/obj/Debug/netcoreapp2.1/SmartParkingApp.dll
 /Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/obj/Debug/netcoreapp2.1/SmartParkingApp.pdb
+<<<<<<< HEAD
 C:/Users/student/Source/Repos/smart-parking-app/SmartParkingApp/SmartParkingApp/obj/Debug/netcoreapp2.1/SmartParkingApp.csprojAssemblyReference.cache
 C:/Users/student/Source/Repos/smart-parking-app/SmartParkingApp/SmartParkingApp/obj/Debug/netcoreapp2.1/SmartParkingApp.csproj.CoreCompileInputs.cache
 C:/Users/student/Source/Repos/smart-parking-app/SmartParkingApp/SmartParkingApp/obj/Debug/netcoreapp2.1/SmartParkingApp.AssemblyInfoInputs.cache
@@ -40,3 +41,5 @@ C:/Users/student/Source/Repos/smart-parking-app/SmartParkingApp/SmartParkingApp/
 C:/Users/student/Source/Repos/smart-parking-app/SmartParkingApp/SmartParkingApp/bin/Debug/netcoreapp2.1/SmartParkingApp.runtimeconfig.dev.json
 C:/Users/student/Source/Repos/smart-parking-app/SmartParkingApp/SmartParkingApp/bin/Debug/netcoreapp2.1/SmartParkingApp.dll
 C:/Users/student/Source/Repos/smart-parking-app/SmartParkingApp/SmartParkingApp/bin/Debug/netcoreapp2.1/SmartParkingApp.pdb
+=======
+>>>>>>> parent of 759b482... mycode 1.4.3

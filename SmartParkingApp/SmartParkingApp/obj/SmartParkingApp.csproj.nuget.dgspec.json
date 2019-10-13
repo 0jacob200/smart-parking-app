@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\student\\Source\\Repos\\smart-parking-app\\SmartParkingApp\\SmartParkingApp\\SmartParkingApp.csproj": {}
+    "C:\\Users\\student\\source\\repos\\smart-parking-app\\SmartParkingApp\\SmartParkingApp\\SmartParkingApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\student\\Source\\Repos\\smart-parking-app\\SmartParkingApp\\SmartParkingApp\\SmartParkingApp.csproj": {
+    "C:\\Users\\student\\source\\repos\\smart-parking-app\\SmartParkingApp\\SmartParkingApp\\SmartParkingApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\student\\Source\\Repos\\smart-parking-app\\SmartParkingApp\\SmartParkingApp\\SmartParkingApp.csproj",
+        "projectUniqueName": "C:\\Users\\student\\source\\repos\\smart-parking-app\\SmartParkingApp\\SmartParkingApp\\SmartParkingApp.csproj",
         "projectName": "SmartParkingApp",
-        "projectPath": "C:\\Users\\student\\Source\\Repos\\smart-parking-app\\SmartParkingApp\\SmartParkingApp\\SmartParkingApp.csproj",
+        "projectPath": "C:\\Users\\student\\source\\repos\\smart-parking-app\\SmartParkingApp\\SmartParkingApp\\SmartParkingApp.csproj",
         "packagesPath": "C:\\Users\\student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\student\\Source\\Repos\\smart-parking-app\\SmartParkingApp\\SmartParkingApp\\obj\\",
+        "outputPath": "C:\\Users\\student\\source\\repos\\smart-parking-app\\SmartParkingApp\\SmartParkingApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
