@@ -8,3 +8,8 @@
 /Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/obj/Release/netcoreapp2.1/SmartParkingApp.dll
 /Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/obj/Release/netcoreapp2.1/SmartParkingApp.pdb
 /Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/obj/Release/netcoreapp2.1/SmartParkingApp.csprojAssemblyReference.cache
+/Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/bin/Release/netcoreapp2.1/ParkingManager.cs
+/Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/bin/Release/netcoreapp2.1/ParkingSession.cs
+/Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/bin/Release/netcoreapp2.1/Program.cs
+/Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/bin/Release/netcoreapp2.1/Tariff.cs
+/Users/yakovshumilov/Documents/GitHub/smart-parking-app/SmartParkingApp/SmartParkingApp/bin/Release/netcoreapp2.1/User.cs
