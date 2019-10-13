@@ -8,12 +8,20 @@ namespace ParkingApp
     {
         static void Main(string[] args)
         {
-            /* для проверки активировать dateForDebug в ParkingManager */
-
-            ParkingManager PM = new ParkingManager(500);
+            //  ПРОВЕРКА БАЗОВОГО ЗАДАНИЯ
+            //для проверки активировать dateForDebug в ParkingManager
+            ParkingManager PM = new ParkingManager(500, new Dictionary<int, decimal>
+            {
+                {15, 0},
+                {60, 120},
+                {120, 220},
+                {180, 300},
+                {240, 360},
+                {300, 400},
+                {360, 420}
+            } );
             // проверка ParkingSession
             ParkingSession parkingSession1 = new ParkingSession(new DateTime(2019, 10, 10, 11, 40, 00), null, null, null, "gngfn", 0);
-
 
             // Проверка работы EntryParking:
             ParkingSession parkingSession2 = PM.EnterParking("dsfhkwhg", new DateTime(2019, 10, 10, 11, 40, 00));
@@ -50,6 +58,7 @@ namespace ParkingApp
             var DateTimeOfparkingSession7 = new DateTime(2019, 10, 10, 12, 30, 00);
             ParkingSession parkingSession7 = PM.EnterParking("fsfsdgd", DateTimeOfparkingSession7);
 
+            PM.PrintAllOpenSessionForDebug();
 
             // проверка GetRemainingCost:
             // 1. при первой оплате выезда
@@ -146,6 +155,22 @@ namespace ParkingApp
             {
                 Console.WriteLine("session = null");
             }
+
+
+            //ПРОВЕРКА ДОП ЗАДАНИЯ 1.
+            ParkingManager pm = new ParkingManager(); //новый запуск программы
+            Console.WriteLine("Вместимость паркинга:" + pm.ParkingCapacity);
+            Console.WriteLine("Номер последнего билета: " + pm.TicketId);
+            pm.PrintAllOpenSessionForDebug();
+            pm.PrintAllClosedSessionForDebug();
+            pm.EnterParking("fhvgbofdkfdsob", new DateTime(2019, 10, 13, 20, 20, 56));
+
+            ParkingManager pm2 = new ParkingManager(); //новый запуск программы
+            Console.WriteLine("Вместимость паркинга:" + pm2.ParkingCapacity);
+            Console.WriteLine("Номер последнего билета: " + pm2.TicketId);
+            pm2.PrintAllOpenSessionForDebug();
+            pm2.PrintAllClosedSessionForDebug();
+
 
         }
 

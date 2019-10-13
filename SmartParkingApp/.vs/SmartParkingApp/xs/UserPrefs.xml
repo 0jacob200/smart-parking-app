@@ -2,11 +2,30 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="SmartParkingApp/ParkingManager.cs">
     <Files>
       <File FileName="SmartParkingApp/Program.cs" Line="132" Column="40" />
-      <File FileName="SmartParkingApp/ParkingManager.cs" Line="42" Column="50" />
+      <File FileName="SmartParkingApp/ParkingManager.cs" Line="49" Column="49" />
       <File FileName="SmartParkingApp/ParkingSession.cs" />
       <File FileName="SmartParkingApp/Tariff.cs" />
       <File FileName="SmartParkingApp/User.cs" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SmartParkingApp" expanded="True">
+            <Node name="SmartParkingApp" expanded="True">
+              <Node name="ParkingManager.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State name="__root__">
+          <Node name="SmartParkingApp" expanded="True" selected="True" />
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.SmartParkingApp PreferredExecutionTarget="MonoDevelop.Default" />

@@ -15,16 +15,7 @@ namespace ParkingApp
     {
         private static List<ParkingSession> ListSessionOpen = new List<ParkingSession>();
         private static List<ParkingSession> ListSessionClosed = new List<ParkingSession>();
-        private static Dictionary<int, decimal> DictTariff = new Dictionary<int, decimal>
-        {
-            {15, 0},
-            {60, 120},
-            {120, 220},
-            {180, 300},
-            {240, 360},
-            {300, 400},
-            {360, 420}
-        };
+        private static Dictionary<int, decimal> DictTariff = new Dictionary<int, decimal>();
 
         public int ParkingCapacity
         {
@@ -38,17 +29,54 @@ namespace ParkingApp
             private set;
         }
 
-
         internal static int FreeLeavePeriod = 15;
 
-        public ParkingManager(int parkingCapacity)
+        /// <summary>
+        /// Конструктор, вызываемый при первом запуске
+        /// </summary>
+        /// <param name="parkingCapacity">Вместимость парковки</param>
+        public ParkingManager(int parkingCapacity, Dictionary<int, decimal> dTariff)
         {
             ParkingCapacity = parkingCapacity;
             TicketId = 0;
+            DictTariff = dTariff;
+
+            var binform = new BinaryFormatter();
+            using (var file = new FileStream("../../../infoParkingManager.dat", FileMode.OpenOrCreate))
+            {
+                binform.Serialize(file, parkingCapacity);
+                binform.Serialize(file, dTariff);
+            }
+        }
+
+        /// <summary>
+        /// Конструктор, вызываемый при повторных запусках
+        /// </summary>
+        public ParkingManager()
+        {
+            var binform = new BinaryFormatter();
+            using (var file = new FileStream("../../../opensession.dat", FileMode.OpenOrCreate))
+            {
+                ListSessionOpen = (List<ParkingSession>)binform.Deserialize(file);
+            }
+
+            var binform2 = new BinaryFormatter();
+            using (var file = new FileStream("../../../closedsession.dat", FileMode.OpenOrCreate))
+            {
+                ListSessionClosed = (List<ParkingSession>)binform2.Deserialize(file);
+            }
+            var binform3 = new BinaryFormatter();
+            using (var file = new FileStream("../../../infoParkingManager.dat", FileMode.Open))
+            {
+                ParkingCapacity = (int)binform3.Deserialize(file);
+                DictTariff = (Dictionary<int, decimal>)binform3.Deserialize(file);
+            }
+
+            TicketId = ListSessionClosed.Count + ListSessionOpen.Count;
         }
 
         /* BASIC PART */
-        public ParkingSession EnterParking(string carPlateNumber, DateTime dateForDebug)
+        public ParkingSession EnterParking(string carPlateNumber, DateTime dateForDebug) // TODO: убрать dateForDebug
         {
             #region
             /* Check that there is a free parking place (by comparing the parking capacity 
@@ -100,21 +128,16 @@ namespace ParkingApp
             {
                 return null;
             }
-            ParkingSession newParkingSession = new ParkingSession(/*DateTime.Now*/ dateForDebug, null, null, null, carPlateNumber, ++TicketId);
+            ParkingSession newParkingSession = new ParkingSession(/*DateTime.Now*/
+                dateForDebug, null, null, null, carPlateNumber, ++TicketId);
             ListSessionOpen.Add(newParkingSession);
-
-            var binform = new BinaryFormatter();
-            using (var file = new FileStream("opensession.bin", FileMode.OpenOrCreate))
-            {
-                binform.Serialize(file, newParkingSession);
-            }
+            SerializeChangesOfListSessionOpen();
             return newParkingSession;
 
         }
 
-        public bool TryLeaveParkingWithTicket(int ticketNumber, out ParkingSession session, DateTime dateForDebug)
+        public bool TryLeaveParkingWithTicket(int ticketNumber, out ParkingSession session, DateTime dateForDebug) // TODO: убрать dateForDebug
         {
-
             #region
             /*
              * Check that the car leaves parking within the free leave period
@@ -137,21 +160,6 @@ namespace ParkingApp
              * 2. В противном случае вернуть false, session = null
              * (можно написать не налл, а что такое другое, но написать почему)
              */
-
-            //session = FindOpenSessionByTicket(ticketNumber); // TODO убрать
-            //if (Convert.ToInt32( (/*DateTime.Now*/dateForDebug - session.EntryDt).TotalMinutes ) <= FreeLeavePeriod
-            //    || Convert.ToInt32( (/*DateTime.Now*/dateForDebug - session.PaymentD.TotalMinutes  ) <= FreeLeavePeriod) //TODO: не факт что верно. проверить при pAymentDt = null
-            //{
-            //    session.ExitDt = /*DateTime.Now*/dateForDebug;
-            //    ListSessionOpen.Remove(session);
-            //    ListSessionClosed.Add(session);
-            //    return true;
-            //}
-            //else
-            //{
-            //    //session = null;
-            //    return false;
-            //}
             #endregion
 
             bool flagOfAccess = false;
@@ -162,6 +170,10 @@ namespace ParkingApp
                 flagOfAccess = true;
             }
 
+            if (session == null)
+            {
+                flagOfAccess = false;
+            }
 
             #region
             //double minAfterLastPayment;
@@ -208,7 +220,9 @@ namespace ParkingApp
                 case true:
                     session.ExitDt = /*DateTime.Now*/dateForDebug;
                     ListSessionOpen.Remove(session);
+                    SerializeChangesOfListSessionOpen();
                     ListSessionClosed.Add(session);
+                    SerializeListSessionClosed();
                     break;
 
                 case false:
@@ -219,7 +233,7 @@ namespace ParkingApp
 
         }
 
-        public decimal GetRemainingCost(int ticketNumber, DateTime dateForDebug)
+        public decimal GetRemainingCost(int ticketNumber, DateTime dateForDebug) // TODO: убрать dateForDebug
         {
             #region
             /* Return the amount to be paid for the parking
@@ -252,7 +266,7 @@ namespace ParkingApp
             return amount;
         }
 
-        public void PayForParking(int ticketNumber, decimal amount, DateTime dateForDebug)
+        public void PayForParking(int ticketNumber, decimal amount, DateTime dateForDebug) // TODO: убрать dateForDebug
         {
             #region
             /*
@@ -279,10 +293,11 @@ namespace ParkingApp
                 session.TotalPayment += amount;
             }
             session.PaymentDt = /*DateTime.Now*/dateForDebug;
+            SerializeChangesOfListSessionOpen();
         }
 
         /* ADDITIONAL TASK 2 */ // TODO
-        public bool TryLeaveParkingByCarPlateNumber(string carPlateNumber, out ParkingSession session)
+        public bool TryLeaveParkingByCarPlateNumber(string carPlateNumber, out ParkingSession session, DateTime dateForDebug) 
         {
             #region
             /* There are 3 scenarios for this method:
@@ -314,6 +329,7 @@ namespace ParkingApp
 
             3b) If there is no connected user, set session = null, return false (the visitor
             has to insert the parking ticket and pay at the kiosk)
+            ___________________________________
 
             Есть 3 сценария для этого метода:
             
@@ -349,10 +365,32 @@ namespace ParkingApp
             */
             #endregion
 
+            session = FindOpenSessionByCarPlateNumber(carPlateNumber);
+            bool flagOfAccessExit = false;
 
-            throw new NotImplementedException();
+
+            switch (flagOfAccessExit)
+            {
+                case true:
+                    session.ExitDt = /*DateTime.Now*/dateForDebug;
+                    ListSessionOpen.Remove(session);
+                    SerializeChangesOfListSessionOpen();
+                    ListSessionClosed.Add(session);
+                    SerializeListSessionClosed();
+                    break;
+
+                case false:
+                    session = null;
+                    break;
+            }
+            return flagOfAccessExit;
         }
 
+        /// <summary>
+        /// Нахождение Открытой сессии по номеру билета
+        /// </summary>
+        /// <param name="ticketNum">номер билета</param>
+        /// <returns>Класс ParkingSession</returns>
         private ParkingSession FindOpenSessionByTicket(int ticketNum)
         {
             foreach (ParkingSession session in ListSessionOpen)
@@ -365,6 +403,65 @@ namespace ParkingApp
             return null;
         }
 
-        
+        public ParkingSession FindOpenSessionByCarPlateNumber(string carPlateNum)
+        {
+            foreach (ParkingSession session in ListSessionOpen)
+            {
+                if (session.CarPlateNumber == carPlateNum)
+                {
+                    return session;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Сериализация изменений в листе с окрытыми сессиями
+        /// </summary>
+        public void SerializeChangesOfListSessionOpen()
+        {
+            var binform = new BinaryFormatter();
+            using (var file = new FileStream("../../../opensession.dat", FileMode.OpenOrCreate))
+            {
+                binform.Serialize(file, ListSessionOpen);
+            }
+        }
+
+        public void PrintAllOpenSessionForDebug()
+        {
+            Console.WriteLine("_____________________\n" +
+                "Open Sessions\n_____________________");
+            foreach (var session in ListSessionOpen)
+            {
+                Console.WriteLine($"session {session.TicketNumber}   EntryDt:{session.EntryDt}\n   " +
+                    $"    PaymentDt:{session.PaymentDt}\n       ExitDt:{session.ExitDt}" +
+                $"\n       TotalPayment:{session.TotalPayment}\n       CarPlateNumber;{session.CarPlateNumber}");
+            }
+        }
+
+        /// <summary>
+        /// Сериализация закрытых сессий
+        /// </summary>
+        public void SerializeListSessionClosed()
+        {
+            var binform = new BinaryFormatter();
+            using (var file = new FileStream("../../../closedsession.dat", FileMode.OpenOrCreate))
+            {
+                binform.Serialize(file, ListSessionClosed);
+            }
+        }
+
+        public void PrintAllClosedSessionForDebug()
+        {
+            Console.WriteLine("_____________________\n" +
+                "Closed Sessions\n_____________________");
+            foreach (var session in ListSessionClosed)
+            {
+                Console.WriteLine($"session {session.TicketNumber}   EntryDt:{session.EntryDt}\n " +
+                    $"      PaymentDt:{session.PaymentDt}\n       ExitDt:{session.ExitDt}" +
+                $"\n       TotalPayment:{session.TotalPayment}\n       CarPlateNumber;{session.CarPlateNumber}");
+            }
+        }
+
     }
 }
