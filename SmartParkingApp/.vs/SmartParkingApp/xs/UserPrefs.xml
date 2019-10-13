@@ -1,18 +1,18 @@
 ﻿<Properties StartupConfiguration="{0796E990-0713-4536-A064-73CE2BE0CED6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SmartParkingApp/ParkingManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SmartParkingApp/Tariff.cs">
     <Files>
-      <File FileName="SmartParkingApp/Program.cs" Line="132" Column="40" />
-      <File FileName="SmartParkingApp/ParkingManager.cs" Line="49" Column="49" />
-      <File FileName="SmartParkingApp/ParkingSession.cs" />
-      <File FileName="SmartParkingApp/Tariff.cs" />
-      <File FileName="SmartParkingApp/User.cs" />
+      <File FileName="SmartParkingApp/Program.cs" Line="189" Column="57" />
+      <File FileName="SmartParkingApp/ParkingManager.cs" Line="329" Column="58" />
+      <File FileName="SmartParkingApp/User.cs" Line="18" Column="6" />
+      <File FileName="SmartParkingApp/ParkingSession.cs" Line="16" Column="45" />
+      <File FileName="SmartParkingApp/Tariff.cs" Line="15" Column="26" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="SmartParkingApp" expanded="True">
             <Node name="SmartParkingApp" expanded="True">
-              <Node name="ParkingManager.cs" selected="True" />
+              <Node name="Tariff.cs" selected="True" />
             </Node>
           </Node>
         </State>

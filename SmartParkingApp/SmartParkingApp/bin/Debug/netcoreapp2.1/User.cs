@@ -1,8 +1,5 @@
-﻿using System;
-
-namespace ParkingApp
+﻿namespace ParkingApp
 {
-    [Serializable]
     class User
     {
         public string Name { get; set; }

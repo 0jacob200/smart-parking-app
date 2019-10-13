@@ -67,7 +67,7 @@ namespace ParkingApp
             var DateTimeOfparkingSession7 = new DateTime(2019, 10, 10, 12, 30, 00);
             ParkingSession parkingSession7 = PM.EnterParking("fsfsdgd", DateTimeOfparkingSession7);
 
-            PM.PrintAllOpenSession();
+            PM.PrintAllOpenSessionForDebug();
 
             // проверка GetRemainingCost:
             // 1. при первой оплате выезда
@@ -170,15 +170,15 @@ namespace ParkingApp
             ParkingManager pm = new ParkingManager(); //новый запуск программы
             Console.WriteLine("Вместимость паркинга:" + pm.ParkingCapacity);
             Console.WriteLine("Номер последнего билета: " + pm.TicketId);
-            pm.PrintAllOpenSession();
-            pm.PrintAllClosedSession();
+            pm.PrintAllOpenSessionForDebug();
+            pm.PrintAllClosedSessionForDebug();
             pm.EnterParking("fhvgbofdkfdsob", new DateTime(2019, 10, 13, 20, 20, 56));
 
             ParkingManager pm2 = new ParkingManager(); //новый запуск программы
             Console.WriteLine("Вместимость паркинга:" + pm2.ParkingCapacity);
             Console.WriteLine("Номер последнего билета: " + pm2.TicketId);
-            pm2.PrintAllOpenSession();
-            pm2.PrintAllClosedSession();
+            pm2.PrintAllOpenSessionForDebug();
+            pm2.PrintAllClosedSessionForDebug();
 
             Console.WriteLine("нажмите любую кнопку для перехода в тестовый интерфейс");
             Console.ReadKey();
@@ -219,26 +219,16 @@ namespace ParkingApp
                         }
                         break;
                     case 2:
-                        Console.WriteLine("Введите дату: ");
-                        DateTime date = Convert.ToDateTime(Console.ReadLine());
-                        Console.WriteLine("Введите номер машины: ");
-                        string carPlateNum11 = Convert.ToString(Console.ReadLine());
-                        Parkovka.EnterParking(carPlateNum11, date);
+                        
                         break;
                     case 3:
-                        Console.WriteLine("Введите дату: ");
-                        DateTime date11 = Convert.ToDateTime(Console.ReadLine());
-                        Console.WriteLine("Введите номер машины: ");
-                        int ticketN = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("Вы должны заплатить: {0}", Parkovka.GetRemainingCost(ticketN, date11));
+                        Console.WriteLine("kjvhdsuhgsrfjgh");
                         break;
                     case 4:
                         Console.WriteLine("klfjvgjfdhb");
                         break;
                     case 5:
-                        Parkovka.PrintAllUserinLoyalty();
-                        Parkovka.PrintAllOpenSession();
-                        Parkovka.PrintAllClosedSession();
+                        Console.WriteLine("fhvkihfduih");
                         break;
                     case 6:
                         flagToContinue = false;

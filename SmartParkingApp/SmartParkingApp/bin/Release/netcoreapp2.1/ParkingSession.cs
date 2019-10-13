@@ -17,6 +17,8 @@ namespace ParkingApp
         public string CarPlateNumber { get; set; }
         // Issued printed ticket
         public int TicketNumber { get; set; }
+        // Статус пользователя
+        public User StatusLoyaltyProgram { get; set; }
 
         public ParkingSession(DateTime entryDT, DateTime? paymentDT, DateTime? exitDT,
             decimal? totalPay, string carPlateNum, int ticketNum)
